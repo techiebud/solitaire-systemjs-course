@@ -9,6 +9,7 @@
     "underscore": "1.8.2",
     "ngDraggable": "0.1.8",
     "traceur": "0.0.91",
-    "es6-module-loader": "~0.17.9"
+    "es6-module-loader": "~0.17.9",
+    "system.js": "0.19.3"
   }
 }

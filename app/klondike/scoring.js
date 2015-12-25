@@ -1,4 +1,3 @@
-
 function scoreForMoving(source, destionation) {
     if (destionation.name === "TableauPile") {
         if (source.name === "FoundationPile") {
@@ -14,21 +13,21 @@ function scoreForMoving(source, destionation) {
 }
 export class Scoring {
 
-    constructor(){
-        this.score = 0;
+    score = 0;
 
-    }
-
-    newGame(){
+    newGame() {
         this.score = 0;
     };
-    tableauCardTurnedUp () {
+
+    tableauCardTurnedUp() {
         this.score += 5;
     };
-     dropped (source, destionation) {
+
+    dropped(source, destionation) {
         this.score += scoreForMoving(source, destionation) || 0;
     };
-    wasteRecycle()  {
+
+    wasteRecycle() {
         this.score = Math.max(this.score - 100, 0);
     };
 

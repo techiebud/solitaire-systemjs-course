@@ -1,6 +1,3 @@
-/**
- * Created by techi on 12/23/2015.
- */
 System.trace = true;
 
 window.showModuleRelationships = function () {
@@ -11,12 +8,12 @@ window.showModuleRelationships = function () {
 
     function displayName(module) {
         return module
-            .replace("http://127.0.0.1:8080/app/", "");
+            .replace(System.baseURL, "");
     }
 
     var moduleDefinitions = modules.map(function (module) {
         var name = displayName(module.name);
-        return "[" + name + "]";
+        return "[" + name + "|" + module.metadata.format + "]";
     });
 
     var dependencyDefinitions = [];
@@ -29,6 +26,9 @@ window.showModuleRelationships = function () {
             var name = displayName(module.name);
 
             var dependencies = module.deps
+                .map(function(dependency){
+                    return System.normalizeSync(dependency, module.name, module.address);
+                })
                 .map(displayName)
                 .map(function (dependencyName) {
                     return "[" + name + "]->[" + dependencyName + "]"
